@@ -1,21 +1,14 @@
 function getMoneySpent(keyboards, drives, b) {
     let sum = 0;
-    let budgetDiff = 0;
+    let arr = [];
     let count = 0;
-    let finalAmmount;
 
     for(let i=0; i<keyboards.length; i++){
         for(let j=0; j<drives.length; j++){
             sum = keyboards[i] + drives[j];
 
-            if(sum < b){
-                count++;
-                budgetDiff = b - sum;
-                finalAmmount = budgetDiff;
-
-                if(budgetDiff < finalAmmount){
-                    finalAmmount = budgetDiff;
-                }
+            if(b > sum){
+                arr.push(sum);
             } 
 
            
@@ -23,10 +16,10 @@ function getMoneySpent(keyboards, drives, b) {
         
     }
 
-    if(count == 0){
+    if(arr.length == 0){
         return -1;
     } else {
-        return b - finalAmmount;
+        return Math.max(...arr);
     }
   
 }
@@ -35,3 +28,5 @@ const func = getMoneySpent([3,1], [5,2,8], 10);
 console.log(func);
 const func2 = getMoneySpent([5], [4], 5);
 console.log(func2);
+const func3 = getMoneySpent([40,50,70,60], [5,8,12, 29], 100);
+console.log(func3);
