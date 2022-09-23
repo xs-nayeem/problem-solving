@@ -1,19 +1,19 @@
 function getMoneySpent(keyboards, drives, b) {
     let sum = 0;
     let arr = [];
-    let count = 0;
 
     for(let i=0; i<keyboards.length; i++){
         sum = 0;
         for(let j=0; j<drives.length; j++){
             sum = keyboards[i] + drives[j];
 
-            if(b > sum){
+            if(b >= sum){
                 arr.push(sum);
             } 
         }
         
     }
+    console.log(arr);
 
     if(arr.length == 0){
         return -1;
